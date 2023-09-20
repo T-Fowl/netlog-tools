@@ -14,10 +14,15 @@ plugins {
     kotlin("jvm") version "1.9.0"
     kotlin("plugin.serialization") version "1.9.0"
     idea
+    application
 }
 
 group = "com.tfowl.netlog"
 version = "1.0-SNAPSHOT"
+
+application {
+    mainClass = "com.tfowl.Main"
+}
 
 repositories {
     mavenCentral()

@@ -1,3 +1,5 @@
+@file:JvmName("Main")
+
 package com.tfowl
 
 import com.github.ajalt.clikt.core.subcommands
