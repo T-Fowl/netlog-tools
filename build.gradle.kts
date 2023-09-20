@@ -17,11 +17,11 @@ plugins {
     application
 }
 
-group = "com.tfowl.netlog"
+group = "com.tfowl.netlogtools"
 version = "1.0-SNAPSHOT"
 
 application {
-    mainClass = "com.tfowl.Main"
+    mainClass = "com.tfowl.netlogtools.cli.Main"
 }
 
 repositories {
@@ -82,14 +82,14 @@ repositories {
 //
 //        val client = HttpClient.newHttpClient()
 //
-//        val packageName = "com.tfowl.netlog"
+//        val packageName = "com.tfowl.netlogtools.netlog"
 //
 //        val root = Path.of(generatedLogTypeDir, packageName.replace('.', '/'))
 //
 //        // Base NetLogEnum with some convenience functions on the Factory (companion object)
 //        writeKotlinSourceFile(
 //            root.resolve("NetLogEnum.kt"), """
-//package com.tfowl.netlog
+//package com.tfowl.netlogtools.netlog
 //interface NetLogEnum<E : NetLogEnum<E>> {
 //    val label: String
 //}

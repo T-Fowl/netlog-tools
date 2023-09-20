@@ -1,4 +1,4 @@
-package com.tfowl.extractor
+package com.tfowl.netlogtools.extractor
 
 import io.ktor.http.*
 import io.ktor.util.*

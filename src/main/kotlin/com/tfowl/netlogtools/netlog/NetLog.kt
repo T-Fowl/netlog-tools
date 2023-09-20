@@ -1,23 +1,9 @@
-package com.tfowl.netlog
+package com.tfowl.netlogtools.netlog
 
-import com.tfowl.swap
 import kotlinx.serialization.Contextual
-import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.descriptors.PrimitiveKind
-import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
-import kotlinx.serialization.descriptors.SerialDescriptor
-import kotlinx.serialization.encoding.Decoder
-import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.*
-import kotlinx.serialization.modules.SerializersModule
-import kotlinx.serialization.modules.contextual
-import okio.BufferedSource
-import okio.buffer
-import okio.source
-import java.nio.file.Path
-import kotlin.io.path.inputStream
 
 @JvmInline
 value class EventType(val name: String)

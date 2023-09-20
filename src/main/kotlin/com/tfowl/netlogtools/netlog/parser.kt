@@ -1,6 +1,6 @@
-package com.tfowl.netlog
+package com.tfowl.netlogtools.netlog
 
-import com.tfowl.swap
+import com.tfowl.netlogtools.swap
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.PrimitiveKind

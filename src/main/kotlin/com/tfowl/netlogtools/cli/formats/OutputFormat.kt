@@ -1,7 +1,8 @@
-package com.tfowl.formats
+package com.tfowl.netlogtools.cli.formats
 
-import com.tfowl.*
-import com.tfowl.extractor.HttpTransaction
+import com.tfowl.netlogtools.*
+import com.tfowl.netlogtools.extractor.HttpTransaction
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.okio.encodeToBufferedSink
 import kotlinx.serialization.modules.SerializersModule
@@ -25,6 +26,7 @@ class JsonOutputFormat(prettyPrint: Boolean = false) : OutputFormat {
         }
     }
 
+    @ExperimentalSerializationApi
     override fun write(sink: BufferedSink, transactions: List<HttpTransaction>) {
         json.encodeToBufferedSink(transactions, sink)
     }

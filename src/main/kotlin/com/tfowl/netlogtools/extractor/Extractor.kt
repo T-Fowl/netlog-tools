@@ -1,6 +1,6 @@
-package com.tfowl.extractor
+package com.tfowl.netlogtools.extractor
 
-import com.tfowl.netlog.*
+import com.tfowl.netlogtools.netlog.*
 import io.ktor.http.*
 import io.ktor.util.*
 import okio.ByteString.Companion.decodeBase64

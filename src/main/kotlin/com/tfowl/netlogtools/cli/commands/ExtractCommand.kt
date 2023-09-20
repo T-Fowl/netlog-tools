@@ -1,4 +1,4 @@
-package com.tfowl.commands
+package com.tfowl.netlogtools.cli.commands
 
 import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.parameters.arguments.argument
@@ -6,8 +6,8 @@ import com.github.ajalt.clikt.parameters.arguments.multiple
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.required
 import com.github.ajalt.clikt.parameters.types.path
-import com.tfowl.extractor.extractHttpTransactions
-import com.tfowl.netlog.loadNetLog
+import com.tfowl.netlogtools.extractor.extractHttpTransactions
+import com.tfowl.netlogtools.netlog.loadNetLog
 import io.ktor.http.*
 import okio.ByteString
 import okio.buffer

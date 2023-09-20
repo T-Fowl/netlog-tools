@@ -1,6 +1,6 @@
-package com.tfowl.netlog
+package com.tfowl.netlogtools.netlog
 
-import com.tfowl.netlog.Params.eventParamsJson
+import com.tfowl.netlogtools.netlog.Params.eventParamsJson
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json

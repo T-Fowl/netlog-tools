@@ -1,4 +1,4 @@
-package com.tfowl.commands
+package com.tfowl.netlogtools.cli.commands
 
 import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.parameters.arguments.argument
@@ -8,10 +8,9 @@ import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.required
 import com.github.ajalt.clikt.parameters.types.enum
 import com.github.ajalt.clikt.parameters.types.path
-import com.tfowl.extractor.extractHttpTransactions
-import com.tfowl.formats.JsonOutputFormat
-import com.tfowl.netlog.loadNetLog
-import kotlinx.serialization.json.Json
+import com.tfowl.netlogtools.extractor.extractHttpTransactions
+import com.tfowl.netlogtools.cli.formats.JsonOutputFormat
+import com.tfowl.netlogtools.netlog.loadNetLog
 import okio.buffer
 import okio.sink
 import java.nio.file.Path
