@@ -3,6 +3,7 @@ package com.tfowl.netlogtools.cli.commands
 import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.parameters.arguments.argument
 import com.github.ajalt.clikt.parameters.arguments.multiple
+import com.github.ajalt.clikt.parameters.groups.provideDelegate
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.required
 import com.github.ajalt.clikt.parameters.types.path
@@ -36,6 +37,8 @@ class Asset(
 
 class ExtractCommand : CliktCommand() {
 
+    val filters by FilteringOptions()
+
     val output: Path by option("-o", "--output")
         .path(canBeFile = false)
         .required()
@@ -44,10 +47,13 @@ class ExtractCommand : CliktCommand() {
 
 
     override fun run() {
+        val filter = filters.createFilter()
+
         output.createDirectories()
 
         val urlAssets = inputs.map { path -> loadNetLog(path) }
             .flatMap { log -> extractHttpTransactions(log) }
+            .filter(filter)
             .mapNotNull { transaction ->
                 transaction.response.content?.takeIf { it.size > 0 }?.let { content ->
                     val type = transaction.response.headers[HttpHeaders.ContentType]?.let(ContentType::parse)

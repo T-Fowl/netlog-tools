@@ -3,6 +3,7 @@ package com.tfowl.netlogtools.cli.commands
 import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.parameters.arguments.argument
 import com.github.ajalt.clikt.parameters.arguments.multiple
+import com.github.ajalt.clikt.parameters.groups.provideDelegate
 import com.github.ajalt.clikt.parameters.options.default
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.required
@@ -23,6 +24,8 @@ enum class OutputFormatOption {
 
 class ConvertCommand : CliktCommand() {
 
+    val filters by FilteringOptions()
+
     val output: Path by option("-o", "--output")
         .path(canBeDir = false)
         .required()
@@ -35,8 +38,11 @@ class ConvertCommand : CliktCommand() {
 
 
     override fun run() {
+        val filter = filters.createFilter()
+
         val transactions = inputs.map { path -> loadNetLog(path) }
             .flatMap { log -> extractHttpTransactions(log) }
+            .filter(filter)
 
         val fmt = when (format) {
             OutputFormatOption.JSON -> JsonOutputFormat(prettyPrint = true)
