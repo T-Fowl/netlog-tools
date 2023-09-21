@@ -39,11 +39,16 @@ class ExtractCommand : CliktCommand() {
 
     val filters by FilteringOptions()
 
-    val output: Path by option("-o", "--output")
+    val output: Path by option(
+        "-o", "--output",
+        help = "Directory to extract responses within"
+    )
         .path(canBeFile = false)
         .required()
 
-    val inputs: List<Path> by argument().path(mustExist = true).multiple()
+    val inputs: List<Path> by argument(help = "Netlog files")
+        .path(mustExist = true)
+        .multiple()
 
 
     override fun run() {

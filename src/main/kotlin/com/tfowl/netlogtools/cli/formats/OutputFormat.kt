@@ -1,6 +1,7 @@
 package com.tfowl.netlogtools.cli.formats
 
 import com.tfowl.netlogtools.*
+import com.tfowl.netlogtools.cli.formats.har.toHar
 import com.tfowl.netlogtools.extractor.HttpTransaction
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
@@ -39,8 +40,14 @@ class MitmOutputFormat : OutputFormat {
 }
 
 class HarOutputFormat : OutputFormat {
+    private val json = Json {
+        prettyPrint = true
+    }
+
+    @ExperimentalSerializationApi
     override fun write(sink: BufferedSink, transactions: List<HttpTransaction>) {
-        TODO("Not yet implemented")
+        val har = transactions.toHar()
+        json.encodeToBufferedSink(har, sink)
     }
 }
 
@@ -49,16 +56,3 @@ class WarcOutputFormat : OutputFormat {
         TODO("Not yet implemented")
     }
 }
-
-class CsvOutputFormat : OutputFormat {
-    override fun write(sink: BufferedSink, transactions: List<HttpTransaction>) {
-        TODO("Not yet implemented")
-    }
-}
-
-class SqliteOutputFormat : OutputFormat {
-    override fun write(sink: BufferedSink, transactions: List<HttpTransaction>) {
-        TODO("Not yet implemented")
-    }
-}
-

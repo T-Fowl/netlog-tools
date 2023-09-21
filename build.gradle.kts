@@ -161,6 +161,9 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-okio:1.6.0")
 
+    implementation("org.hildan.har:har-parser:0.6.0")
+
+
     implementation(platform("io.ktor:ktor-bom:2.3.3"))
     implementation("io.ktor:ktor-http")
     implementation("io.ktor:ktor-utils")

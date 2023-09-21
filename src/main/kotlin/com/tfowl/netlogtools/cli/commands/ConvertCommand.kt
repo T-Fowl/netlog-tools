@@ -8,33 +8,45 @@ import com.github.ajalt.clikt.parameters.options.default
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.required
 import com.github.ajalt.clikt.parameters.types.enum
+import com.github.ajalt.clikt.parameters.types.outputStream
 import com.github.ajalt.clikt.parameters.types.path
-import com.tfowl.netlogtools.extractor.extractHttpTransactions
+import com.tfowl.netlogtools.cli.formats.HarOutputFormat
 import com.tfowl.netlogtools.cli.formats.JsonOutputFormat
+import com.tfowl.netlogtools.extractor.extractHttpTransactions
 import com.tfowl.netlogtools.netlog.loadNetLog
 import okio.buffer
 import okio.sink
+import java.io.OutputStream
 import java.nio.file.Path
 import java.nio.file.StandardOpenOption
 import kotlin.io.path.createParentDirectories
 
 enum class OutputFormatOption {
     JSON,
+    HAR,
 }
 
 class ConvertCommand : CliktCommand() {
 
     val filters by FilteringOptions()
 
-    val output: Path by option("-o", "--output")
-        .path(canBeDir = false)
+    val output: OutputStream by option(
+        "-o", "--output",
+        help = "Output file"
+    )
+        .outputStream(createIfNotExist = true, truncateExisting = true)
         .required()
 
-    val format: OutputFormatOption by option("-f", "--format")
+    val format: OutputFormatOption by option(
+        "-f", "--format",
+        help = "Output file format",
+    )
         .enum<OutputFormatOption>()
         .default(OutputFormatOption.JSON)
 
-    val inputs: List<Path> by argument().path(mustExist = true).multiple()
+    val inputs: List<Path> by argument(help = "Netlog files")
+        .path(mustExist = true)
+        .multiple()
 
 
     override fun run() {
@@ -46,11 +58,10 @@ class ConvertCommand : CliktCommand() {
 
         val fmt = when (format) {
             OutputFormatOption.JSON -> JsonOutputFormat(prettyPrint = true)
+            OutputFormatOption.HAR  -> HarOutputFormat().also { System.err.println("HAR file is experimental") }
         }
 
-        output.createParentDirectories()
-
-        output.sink(StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.CREATE).buffer().use { sink ->
+        output.sink().buffer().use { sink ->
             fmt.write(sink, transactions)
         }
     }
