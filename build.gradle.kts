@@ -1,14 +1,4 @@
-import org.gradle.internal.impldep.org.intellij.lang.annotations.Language
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import java.net.URI
-import java.net.http.HttpClient
-import java.net.http.HttpRequest
-import java.net.http.HttpResponse.BodyHandlers
-import java.nio.file.Files
-import java.nio.file.Path
-import java.nio.file.StandardOpenOption
-import kotlin.io.path.absolute
-import kotlin.io.path.createDirectories
 
 plugins {
     kotlin("jvm") version "1.9.0"
