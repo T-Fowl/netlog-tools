@@ -15,6 +15,7 @@ plugins {
     kotlin("plugin.serialization") version "1.9.0"
     idea
     application
+    id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
 group = "com.tfowl.netlogtools"
