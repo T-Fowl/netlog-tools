@@ -164,7 +164,7 @@ dependencies {
     implementation("org.hildan.har:har-parser:0.6.0")
 
 
-    implementation(platform("io.ktor:ktor-bom:2.3.3"))
+    implementation(platform("io.ktor:ktor-bom:2.3.4"))
     implementation("io.ktor:ktor-http")
     implementation("io.ktor:ktor-utils")
     implementation("io.ktor:ktor-network")
