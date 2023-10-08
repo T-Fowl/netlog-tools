@@ -158,7 +158,7 @@ dependencies {
     implementation("io.ktor:ktor-http")
     implementation("io.ktor:ktor-utils")
     implementation("io.ktor:ktor-network")
-    implementation("com.squareup.okio:okio:3.5.0")
+    implementation("com.squareup.okio:okio:3.6.0")
 
     implementation("com.github.ajalt.clikt:clikt:4.2.0")
 
