@@ -160,7 +160,7 @@ dependencies {
     implementation("io.ktor:ktor-network")
     implementation("com.squareup.okio:okio:3.5.0")
 
-    implementation("com.github.ajalt.clikt:clikt:4.2.0")
+    implementation("com.github.ajalt.clikt:clikt:4.2.1")
 
     implementation("org.apache.logging.log4j:log4j-core:2.20.0")
     runtimeOnly("org.apache.logging.log4j:log4j-slf4j18-impl:2.18.0")
